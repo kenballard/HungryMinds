@@ -31,9 +31,10 @@ namespace Kmb.HungryMinds.Controllers
             return Ok(item);
         }
 
-        public TModel Post(TModel item)
+        public IHttpActionResult Post(TModel item)
         {
-            return _repository.Add(item);
+            item = _repository.Add(item);
+            return Created<TModel>(Url.Link("DefaultApi", new { id = item.Id }), item);
         }
     }
 }
