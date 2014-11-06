@@ -11,7 +11,7 @@ namespace Kmb.HungryMinds.Repositories
         where TModel : IdentifiedModel
     {
         protected List<TModel> models = new List<TModel>();
-        protected int nextId = 1;
+        protected int _nextId = 1;
 
         public IEnumerable<TModel> GetAll()
         {
@@ -25,9 +25,8 @@ namespace Kmb.HungryMinds.Repositories
 
         public TModel Add(TModel item)
         {
-            if (item == null)
-                throw new ModelNullException();
-            item.Id = nextId++;
+            Validate(item);
+            item.Id = _nextId++;
             models.Add(item);
             return item;
         }
@@ -39,11 +38,9 @@ namespace Kmb.HungryMinds.Repositories
 
         public void Update(TModel item)
         {
-            if (item == null)
-                throw new ModelNullException();
             var index = models.FindIndex(m => m.Id == item.Id);
             if (index == -1)
-                throw new ModelIdNotFoundException();
+                throw new ModelIdNotFoundException(); 
             models.RemoveAt(index);
             models.Add(item);
         }
@@ -53,9 +50,16 @@ namespace Kmb.HungryMinds.Repositories
             public ModelNullException() : base ("item") { }
         }
 
-        public class ModelIdNotFoundException : KeyNotFoundException
+        protected void Validate(TModel item)
         {
-
+            if (item == null)
+                throw new ModelNullException();
+            if (models.Any(m => m.Name == item.Name))
+                throw new DuplicateNameException();
         }
+
+        public class ModelIdNotFoundException : KeyNotFoundException { }
+
+        public class DuplicateNameException : ArgumentException { }
     }
 }

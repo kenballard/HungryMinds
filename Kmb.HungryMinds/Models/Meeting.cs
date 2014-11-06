@@ -7,7 +7,5 @@ namespace Kmb.HungryMinds.Models
 {
     public class Meeting : IdentifiedModel
     {
-        public string Name { get; set; }
-        public bool IsActive { get; set; }
     }
 }
