@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Kmb.HungryMinds.Core;
+using Kmb.HungryMinds.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Kmb.HungryMinds.Models
+namespace Kmb.HungryMinds.Repositories
 {
     public abstract class Repository<TModel> : IRepository<TModel> 
         where TModel : IdentifiedModel

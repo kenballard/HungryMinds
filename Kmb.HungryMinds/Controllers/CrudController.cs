@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using Kmb.HungryMinds.Models;
+using Kmb.HungryMinds.Core;
 
 namespace Kmb.HungryMinds.Controllers
 {

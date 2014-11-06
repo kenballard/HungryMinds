@@ -1,4 +1,6 @@
-﻿using Kmb.HungryMinds.Models;
+﻿using Kmb.HungryMinds.Core;
+using Kmb.HungryMinds.Models;
+using Kmb.HungryMinds.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

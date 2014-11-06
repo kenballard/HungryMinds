@@ -1,5 +1,6 @@
-﻿using System;
-namespace Kmb.HungryMinds.Models
+﻿using Kmb.HungryMinds.Models;
+using System;
+namespace Kmb.HungryMinds.Core
 {
     public interface IRepository<TModel>
      where TModel : IdentifiedModel
